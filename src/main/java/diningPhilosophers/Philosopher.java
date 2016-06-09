@@ -66,7 +66,7 @@ public class Philosopher extends Thread implements Runnable
      */
     public void run() {
         int i=0;
-        Random randomNumberGenerator = new Random(300897761);
+        //Random randomNumberGenerator = new Random(300897761);
         try {
 
         while(!finished)
