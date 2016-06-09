@@ -72,16 +72,15 @@ public class Philosopher extends Thread implements Runnable
         while(!finished)
             try {
                 System.out.println(this.getPhilosophersName() +": *Attempts to pick up forks*");
-                rightFork.pickUp(this);
-                leftFork.pickUp(this);
+                    rightFork.pickUp(this);
+                    leftFork.pickUp(this);
                 System.out.println(this.getPhilosophersName() +": *Begins to eat*");
                 this.takeBite();
-                rightFork.putDown(this);
-                leftFork.putDown(this);
+                    rightFork.putDown(this);
+                    leftFork.putDown(this);
 
 
-                this.sleep(2000);
-
+                this.sleep(0020);
                 if(i>1000)
                     finished=true;
                 i++;
@@ -93,7 +92,7 @@ public class Philosopher extends Thread implements Runnable
                 System.out.println(this.getPhilosophersName() +": I cannot eat right now.");
                 rightFork.putDown(this);
                 leftFork.putDown(this);
-                this.sleep(1000);
+                this.sleep(0010);
             }
 
         try{
