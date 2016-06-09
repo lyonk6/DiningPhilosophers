@@ -44,10 +44,22 @@ public class DiningTable {
     }
 
     public void startEating(){
-        for(int i=0; i<philosophers.length;i++) {
-            System.out.println("Starting " + philosophers[i].getPhilosophersName());
-            philosophers[i].run();
-        }
+        //for(int i=0; i<philosophers.length;i++) {
+        System.out.println("Starting " + philosophers[0].getPhilosophersName());
+        philosophers[0].run();
+
+        System.out.println("Starting " + philosophers[1].getPhilosophersName());
+        philosophers[1].run();
+
+        System.out.println("Starting " + philosophers[2].getPhilosophersName());
+        philosophers[2].run();
+
+        System.out.println("Starting " + philosophers[3].getPhilosophersName());
+        philosophers[3].run();
+
+        System.out.println("Starting " + philosophers[4].getPhilosophersName());
+        philosophers[4].run();
+
     }
 
     public void printTable(){

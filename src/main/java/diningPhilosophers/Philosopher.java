@@ -80,9 +80,9 @@ public class Philosopher extends Thread implements Runnable
                 leftFork.putDown(this);
 
 
-                this.sleep(5000);
+                this.sleep(2000);
 
-                if(i>10)
+                if(i>1000)
                     finished=true;
                 i++;
             } catch (NotYourForkException notYourFork) {
