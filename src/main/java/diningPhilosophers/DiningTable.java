@@ -1,15 +1,21 @@
 package diningPhilosophers;
 
 /**
- * This class is the setting for the Dining Philosophers. There are
- * 5 philosophers and 5 threads. In order for a philosopher to eat,
- *
- *             0 
+ * This class is the setting for the Dining Philosophers. There are 5 philosophers
+ * and 5 threads. In order for a philosopher to eat, They must be able to pick up 
+ * two forks, one from either side. If two forks are not available, then the 
+ * philosopher will have to wait for their turn. 
+ * 
+ * Attempting to grab a fork that is in use should throw a ForkInUserException, and
+ * grabbing a fork that does not belong to the philosopher trying to grab it should
+ * throw a NotYourForkException.
+ * 
+ *             P 
  *         -  _ _  -
  *          /     \     
- *       0 |       | 0  
+ *       P |       | P
  *       -  \ _ _ / -
- *         0   -   0      
+ *         P   -   P      
  *
  * Created by kennethlyon on 6/1/16.
  */
