@@ -10,12 +10,27 @@ package diningPhilosophers;
  * grabbing a fork that does not belong to the philosopher trying to grab it should
  * throw a NotYourForkException.
  * 
- *             P 
- *         -  _ _  -
- *          /     \     
- *       P |       | P
- *       -  \ _ _ / -
- *         P   -   P      
+ * 
+ * 
+ * 
+ * 
+ *                    Dostoevsky
+ *                      ......
+ *                 _.d^^^^^^^^^^b._
+ *              .d''              ``b.     
+ *            .p'                    `q. 
+ *   Camus   .d'                      `b.    Kafka
+ *          .d'                        `b.
+ *          ::                          ::
+ *          ::                          ::
+ *          ::                          ::
+ *          `p.                        .q'
+ *           `p.                      .q'
+ *            `b.                    .d' 
+ *              `q..              ..p'   
+ *        Sartre   `^q..........p^``     Nietzsche
+ *                     `''''''`
+ * 
  *
  * Created by kennethlyon on 6/1/16.
  */
@@ -31,7 +46,7 @@ public class DiningTable {
             philosophers[i] = new Philosopher(names[i]);
         for (int i = 0; i < names.length; i++) {
             forks[i]=new Fork(i, philosophers[(i)%5], philosophers[(i+1)%5]);
-            System.out.println("forks[i]==new Fork(philosopher[" + (i % 5) + "], philosopher[" + (i + 1) % 5 + "];");
+            //System.out.println("forks[i]==new Fork(philosopher[" + (i % 5) + "], philosopher[" + (i + 1) % 5 + "]);");
         }
         for(int i=0; i<forks.length;i++){
             philosophers[i].assignForks(forks[(i+4)%5], forks[(i)%5]);
@@ -40,7 +55,7 @@ public class DiningTable {
 
     public static void main(String[]args){
         System.out.println("Program started.");
-	    String[] existentialists ={"Nietzsche", "Sartre", "Camus", "Dostoevsky", "Kierkegaard"};
+        String[] existentialists ={"Nietzsche", "Sartre", "Camus", "Dostoevsky", "Kafka"};
         DiningTable myTable=new DiningTable(existentialists);
         myTable.printTable();
         myTable.startEating();
@@ -49,20 +64,26 @@ public class DiningTable {
 
     public void startEating(){
         //for(int i=0; i<philosophers.length;i++) {
+
         System.out.println("Starting " + philosophers[0].getPhilosophersName());
-        philosophers[0].run();
+        Thread t0=new Thread(philosophers[0]);
+        t0.start();
 
         System.out.println("Starting " + philosophers[1].getPhilosophersName());
-        philosophers[1].run();
+        Thread t1=new Thread(philosophers[1]);
+        t1.start();
 
         System.out.println("Starting " + philosophers[2].getPhilosophersName());
-        philosophers[2].run();
+        Thread t2=new Thread(philosophers[2]);
+        t2.start();
 
         System.out.println("Starting " + philosophers[3].getPhilosophersName());
-        philosophers[3].run();
+        Thread t3=new Thread(philosophers[3]);
+        t3.start();
 
         System.out.println("Starting " + philosophers[4].getPhilosophersName());
-        philosophers[4].run();
+        Thread t4=new Thread(philosophers[4]);
+        t4.start();
 
     }
 

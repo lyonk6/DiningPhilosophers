@@ -1,4 +1,6 @@
 /bin/
+/out/
+/target/
 */WebContent/
 *bin/
 *workspace/

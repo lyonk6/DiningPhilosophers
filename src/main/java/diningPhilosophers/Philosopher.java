@@ -78,7 +78,8 @@ public class Philosopher implements Runnable
 
 
                 Thread.sleep(0020);
-                if(i>1000)
+                if(i>5)
+
                     finished=true;
                 i++;
             } catch (NotYourForkException notYourFork) {
