@@ -1,12 +1,11 @@
 package diningPhilosophers;
-
-import error.ForkInUseException;
-import error.NotYourForkException;
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
+
+import error.ForkInUseException;
+import error.NotYourForkException;
 
 public class Philosopher extends Thread implements Runnable
 {
@@ -26,15 +25,12 @@ public class Philosopher extends Thread implements Runnable
         } catch (IOException e) {
             System.err.println();
         }
-
     }
 
     public void assignForks(Fork rightFork, Fork leftFork){
         this.leftFork = leftFork;
         this.rightFork = rightFork;
-
     }
-
 
     /**
      * Return an array of bytes. Philosophers must eat you
@@ -94,7 +90,6 @@ public class Philosopher extends Thread implements Runnable
                 leftFork.putDown(this);
                 this.sleep(0010);
             }
-
         try{
             writer.close();
             int a=System.in.read();

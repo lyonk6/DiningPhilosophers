@@ -1,6 +1,4 @@
-package diningRoom;
-import diningPhilosophers.Philosopher;
-import diningPhilosophers.Fork;
+package diningPhilosophers;
 
 /**
  * This class is the setting for the Dining Philosophers. There are
