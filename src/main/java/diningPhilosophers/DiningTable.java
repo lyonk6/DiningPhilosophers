@@ -40,7 +40,7 @@ public class DiningTable {
 
     public static void main(String[]args){
         System.out.println("Program started.");
-	    String[] existentialists ={"Nietzsche", "Sartre", "Camus", "Dostoevsky", "Kafka"};
+	    String[] existentialists ={"Nietzsche", "Sartre", "Camus", "Dostoevsky", "Kierkegaard"};
         DiningTable myTable=new DiningTable(existentialists);
         myTable.printTable();
         myTable.startEating();

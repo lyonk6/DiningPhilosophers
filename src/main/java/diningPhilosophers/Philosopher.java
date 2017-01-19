@@ -7,7 +7,7 @@ import java.util.Random;
 import error.ForkInUseException;
 import error.NotYourForkException;
 
-public class Philosopher extends Thread implements Runnable
+public class Philosopher implements Runnable
 {
     private BufferedWriter writer;
     private String philosophersName;
@@ -60,6 +60,7 @@ public class Philosopher extends Thread implements Runnable
      * has it, then wait 3 seconds before attempting to pick up the
      * forks again.
      */
+    //@Override
     public void run() {
         int i=0;
         //Random randomNumberGenerator = new Random(300897761);
@@ -76,7 +77,7 @@ public class Philosopher extends Thread implements Runnable
                     leftFork.putDown(this);
 
 
-                this.sleep(0020);
+                Thread.sleep(0020);
                 if(i>1000)
                     finished=true;
                 i++;
@@ -88,7 +89,7 @@ public class Philosopher extends Thread implements Runnable
                 System.out.println(this.getPhilosophersName() +": I cannot eat right now.");
                 rightFork.putDown(this);
                 leftFork.putDown(this);
-                this.sleep(0010);
+                Thread.sleep(0010);
             }
         try{
             writer.close();
