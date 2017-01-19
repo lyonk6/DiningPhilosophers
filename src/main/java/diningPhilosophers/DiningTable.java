@@ -16,21 +16,21 @@ package diningPhilosophers;
  * 
  *                    Dostoevsky
  *                      ......
- *                 _.d^^^^^^^^^^b._
- *              .d''              ``b.     
+ *            Ψ    _.d^^^^^^^^^^b._    Ψ
+ *              .d''              ``b.
  *            .p'                    `q. 
  *   Camus   .d'                      `b.    Kafka
  *          .d'                        `b.
  *          ::                          ::
  *          ::                          ::
  *          ::                          ::
- *          `p.                        .q'
+ *       Ψ  `p.                        .q'  Ψ
  *           `p.                      .q'
  *            `b.                    .d' 
  *              `q..              ..p'   
  *        Sartre   `^q..........p^``     Nietzsche
  *                     `''''''`
- * 
+ *                         Ψ
  *
  * Created by kennethlyon on 6/1/16.
  */
