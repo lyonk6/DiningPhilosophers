@@ -11,31 +11,31 @@ package diningPhilosophers;
  * throw a NotYourForkException.
  * 
  * 
- * 
- * 
- * 
- *                    Dostoevsky
- *                      ......
- *            Ψ    _.d^^^^^^^^^^b._    Ψ
- *              .d''              ``b.
- *            .p'                    `q. 
- *   Camus   .d'                      `b.    Kafka
- *          .d'                        `b.
- *          ::                          ::
- *          ::                          ::
- *          ::                          ::
- *       Ψ  `p.                        .q'  Ψ
- *           `p.                      .q'
- *            `b.                    .d' 
- *              `q..              ..p'   
- *        Sartre   `^q..........p^``     Nietzsche
- *                     `''''''`
- *                         Ψ
+ *
+ *                          Dostoevsky
+ *                            ......
+ *                  Ψ    _.d^^^^^^^^^^b._    Ψ
+ *                    .d''              ``b.
+ *                  .p'                    `q. 
+ *         Camus   .d'                      `b.   Kafka
+ *                .d'                        `b.
+ *                ::                          ::
+ *                ::                          ::
+ *                ::                          ::
+ *             Ψ  `p.                        .q'  Ψ
+ *                 `p.                      .q'
+ *                  `b.                    .d' 
+ *                    `q..              ..p'   
+ *              Sartre   `^q..      ..p^``   Nietzsche
+ *                           `''''''`
+ *                               Ψ
+ *      
+ *
  *
  * Created by kennethlyon on 6/1/16.
  */
 public class DiningTable {
-
+    private Thread[] threads;
     private Philosopher[] philosophers;
     private Fork[] forks;
     
@@ -53,39 +53,57 @@ public class DiningTable {
         }
     }
 
-    public static void main(String[]args){
-        System.out.println("Program started.");
+    public static void main(String[]args)throws Exception {
+        System.out.println("Welcome to Dining Philosophers.");
         String[] existentialists ={"Nietzsche", "Sartre", "Camus", "Dostoevsky", "Kafka"};
         DiningTable myTable=new DiningTable(existentialists);
         myTable.printTable();
         myTable.startEating();
-        System.out.println("Program finished.");
+        System.out.println("Give the philosophers a couple minutes to eat.");
+        Thread.sleep(2*60*1000);
+        myTable.finishEating();
     }
 
     public void startEating(){
         //for(int i=0; i<philosophers.length;i++) {
-
+        threads=new Thread[5];
         System.out.println("Starting " + philosophers[0].getPhilosophersName());
-        Thread t0=new Thread(philosophers[0]);
-        t0.start();
+        threads[0] =new Thread(philosophers[0]);
+        threads[0].start();
 
         System.out.println("Starting " + philosophers[1].getPhilosophersName());
-        Thread t1=new Thread(philosophers[1]);
-        t1.start();
+        threads[1]=new Thread(philosophers[1]);
+        threads[1].start();
 
         System.out.println("Starting " + philosophers[2].getPhilosophersName());
-        Thread t2=new Thread(philosophers[2]);
-        t2.start();
+        threads[2]=new Thread(philosophers[2]);
+        threads[2].start();
 
         System.out.println("Starting " + philosophers[3].getPhilosophersName());
-        Thread t3=new Thread(philosophers[3]);
-        t3.start();
+        threads[3]=new Thread(philosophers[3]);
+        threads[3].start();
 
         System.out.println("Starting " + philosophers[4].getPhilosophersName());
-        Thread t4=new Thread(philosophers[4]);
-        t4.start();
-
+        threads[4]=new Thread(philosophers[4]);
+        threads[4].start();
     }
+
+    public void finishEating(){
+        boolean everyoneIsDoneEating=true;
+        for(int i=0; i< threads.length; i++){
+            if(philosophers[i].isFinished())
+                threads[i].interrupt();
+            else
+                everyoneIsDoneEating=false;
+        }
+
+        if(everyoneIsDoneEating)
+            System.out.println("Good. Everyone is done eating.");
+        else
+            System.out.println("Ya'all need to hurry up and finish.");
+        System.exit(1);
+    }
+
 
     public void printTable(){
         for(int i=0;i<forks.length;i++){
@@ -95,6 +113,5 @@ public class DiningTable {
         for(int i=0;i<forks.length;i++){
             System.out.println(philosophers[i].getForkNames());
         }
-
     }
 }
