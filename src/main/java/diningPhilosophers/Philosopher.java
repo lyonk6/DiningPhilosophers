@@ -9,6 +9,8 @@ import error.NotYourForkException;
 
 public class Philosopher implements Runnable
 {
+    public static long CHEW_TIME=2000L;
+    public static long PATIENCE=1000L;
     private BufferedWriter writer;
     private String philosophersName;
     private Fork rightFork;
@@ -55,8 +57,8 @@ public class Philosopher implements Runnable
     }
 
     /**
-     * Intermittently attempt to pick up forks. If both forks are
-     * not available, this thread should drop the other fork if it
+     * Intermittently attempt to pick up forks. If either forks is unavailable,
+     * put the fork back down and try again this thread should drop the other fork if it
      * has it, then wait 3 seconds before attempting to pick up the
      * forks again.
      */
@@ -77,9 +79,8 @@ public class Philosopher implements Runnable
                     leftFork.putDown(this);
 
 
-                Thread.sleep(0020);
+                Thread.sleep(CHEW_TIME);
                 if(i>5)
-
                     finished=true;
                 i++;
             } catch (NotYourForkException notYourFork) {
@@ -90,7 +91,7 @@ public class Philosopher implements Runnable
                 System.out.println(this.getPhilosophersName() +": I cannot eat right now.");
                 rightFork.putDown(this);
                 leftFork.putDown(this);
-                Thread.sleep(0010);
+                Thread.sleep(PATIENCE);
             }
         try{
             writer.close();
@@ -120,6 +121,11 @@ public class Philosopher implements Runnable
     public void finishEating(){
         this.finished=true;
     }
+
+    public boolean isFinished(){
+        return finished;
+    }
+
 
     public String getForkNames(){
         return this.getPhilosophersName() +" uses the forks: " + rightFork.getForkNumber() + " and " + leftFork.getForkNumber() + ".";
